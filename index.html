@@ -1,0 +1,347 @@
+<!--Nom: YEDE
+    Prenom: Kadja Jean-Fabien Yoctan
+    But: Création d'un jeu de poker en ligne
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./images/cartes.png" type="image/x-icon" />
+    <title>Poker</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./script.js"></script>
+  </head>
+  <body class="bg-success-subtle" onload="Initialisation()">
+    <div class="container">
+      <div class="row" id="header">
+        <h1 class="text-center">POKER</h1>
+      </div>
+      <div class="row">
+        <!-- Button trigger modal -->
+        <a
+          href="#"
+          class="text-primary text-end"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Règlements
+        </a>
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                  Règlements du jeu
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <p>
+                  Le but du jeu POKER est d'obtenir une combinaison de carte
+                  faute de quoi, le joueur perd sa mise. Les combinaisons
+                  possibles sont les suivantes :
+                </p>
+                <ul>
+                  <li>une paire : 2 cartes de même valeur</li>
+                  <li>Deux paires : 2 x 2 cartes de même valeur</li>
+                  <li>Brelan : 3 cartes de même valeur</li>
+                  <li>Quinte : 5 cartes de même valeur</li>
+                  <li>Couleur : 5 cartes de même couleur</li>
+                  <li>Full House : un brelan + une paire</li>
+                  <li>Carré : 4 cartes de même valeur</li>
+                  <li>Quinte Flush : une quinte + couleur</li>
+                  <li>Quinte Flush Royale : couleur + une suite (10...AS)</li>
+                </ul>
+
+                <p>
+                  Dans une suite, l'AS peut etre considéré comme la plus
+                  petite(A-2-3-4-5) ou comme la plus grande (10-J-Q-K-A). Avant
+                  de débuter la partie, le joueur doit choisir une mise.Par la
+                  suite, le joueur clique sur bouton COMMENCER LA PARTIE afin
+                  d'afficher une première série de cartes. S'il le désire, le
+                  joueur peut échanger ou garder les cartes de son choix. Pour
+                  valider son choix, le joueur doit cliquer sur le bouton
+                  ECHANGER CARTES et de nouvelles cartes s'afficheront. Pour
+                  terminer la partie, le joueur doit cliquer sur le bouton
+                  VALIDER LE JEU, et selon la combinaison obtenu, les gains
+                  seront réajustés.
+                </p>
+
+                <p>Bonne partie !</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 card text-bg-light mb-3 border border-black">
+        <div class="card-header text-start">
+          MISE : <span id="username"> </span>
+        </div>
+        <div class="row card-body">
+          <div class="col-8">
+            <div class="row">
+              <div class="col-3 text-end">1x</div>
+              <div class="col-9 text-start">Une paire</div>
+            </div>
+            <div class="row">
+              <div class="col-3 text-end">2x</div>
+              <div class="col-9 text-start">Deux paires</div>
+            </div>
+            <div class="row">
+              <div class="col-3 text-end">3x</div>
+              <div class="col-9 text-start">Brelan</div>
+            </div>
+            <div class="row">
+              <div class="col-3 text-end">4x</div>
+              <div class="col-9 text-start">Quinte (Straight)</div>
+            </div>
+            <div class="row">
+              <div class="col-3 text-end">5x</div>
+              <div class="col-9 text-start">Couleur (Flush)</div>
+            </div>
+            <div class="row">
+              <div class="col-3 text-end">10x</div>
+              <div class="col-9 text-start">Full house</div>
+            </div>
+            <div class="row">
+              <div class="col-3 text-end">25x</div>
+              <div class="col-9 text-start">Carré</div>
+            </div>
+            <div class="row">
+              <div class="col-3 text-end">50x</div>
+              <div class="col-9 text-start">Quinte Flush (Straight Flush)</div>
+            </div>
+            <div class="row">
+              <div class="col-3 text-end">250x</div>
+              <div class="col-9 text-start">Quinte Flush Royale</div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="row mt-3">
+              <div class="row">
+                <div class="col-12">Votre argent ($)</div>
+              </div>
+              <div class="row">
+                <div class="col-12 end">
+                  <input
+                    class="form-control"
+                    type="number"
+                    name="argent"
+                    id="argent"
+                    disabled
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row mt-5">
+              <div class="row">
+                <div class="col-12">Votre mise ($)</div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <input
+                    class="form-control"
+                    type="number"
+                    name="mise"
+                    id="mise"
+                    min="5"
+                    step="5"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row d-flex justify-content-evenly" id="boutons">
+        <div class="col-3">
+          <button
+            type="button"
+            class="btn btn-light"
+            id="boutonCommencer"
+            onclick="Commencer()"
+          >
+            COMMENCER PARTIE
+          </button>
+        </div>
+        <div class="col-3">
+          <button
+            type="button"
+            class="btn btn-light"
+            id="boutonEchanger"
+            onclick="Echanger()"
+            disabled
+          >
+            ECHANGER CARTES
+          </button>
+        </div>
+        <div class="col-3">
+          <button
+            type="button"
+            class="btn btn-light"
+            id="boutonValider"
+            onclick="ValiderJeu()"
+            disabled
+          >
+            VALIDER JEU
+          </button>
+        </div>
+      </div>
+
+      <div class="col-12 card text-bg-light mt-3 mb-3 border border-black">
+        <div class="card-header text-start bg-success-subtle">JEU</div>
+        <div class="card-body bg-success-subtle">
+          <div class="row justify-content-evenly text-center">
+            <div class="col-2">
+              <div class="row">
+                <img
+                  class="img-fluid"
+                  src="./images/Cartes/carte.png"
+                  height="160"
+                  width="100"
+                  alt="carte1"
+                  id="carte1"
+                />
+              </div>
+              <div class="row justify-content-center">
+                <button
+                  type="button"
+                  class="col-9 btn btn-success mt-3"
+                  id="bouton1"
+                  onclick="garder(carte1)"
+                  disabled
+                >
+                  GARDER
+                </button>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="row">
+                <img
+                  class="img-fluid"
+                  src="./images/Cartes/carte.png"
+                  height="160"
+                  width="100"
+                  alt="carte2"
+                  id="carte2"
+                />
+              </div>
+              <div class="row justify-content-center">
+                <button
+                  type="button"
+                  class="col-9 btn btn-success mt-3"
+                  id="bouton2"
+                  onclick="garder(carte2)"
+                  disabled
+                >
+                  GARDER
+                </button>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="row">
+                <img
+                  class="img-fluid"
+                  src="./images/Cartes/carte.png"
+                  height="160"
+                  width="100"
+                  alt="carte3"
+                  id="carte3"
+                />
+              </div>
+              <div class="row justify-content-center">
+                <button
+                  type="button"
+                  class="col-9 btn btn-success mt-3"
+                  id="bouton3"
+                  onclick="garder(carte3)"
+                  disabled
+                >
+                  GARDER
+                </button>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="row">
+                <img
+                  class="img-fluid"
+                  src="./images/Cartes/carte.png"
+                  height="160"
+                  width="100"
+                  alt="carte4"
+                  id="carte4"
+                />
+              </div>
+              <div class="row justify-content-center">
+                <button
+                  type="button"
+                  class="col-9 btn btn-success mt-3"
+                  id="bouton4"
+                  onclick="garder(carte4)"
+                  disabled
+                >
+                  GARDER
+                </button>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="row">
+                <img
+                  class="img-fluid"
+                  src="./images/Cartes/carte.png"
+                  height="160"
+                  width="100"
+                  alt="carte5"
+                  id="carte5"
+                />
+              </div>
+              <div class="row justify-content-center">
+                <button
+                  type="button"
+                  class="col-9 btn btn-success mt-3"
+                  id="bouton5"
+                  onclick="garder(carte5)"
+                  disabled
+                >
+                  GARDER
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="h-100 d-flex justify-content-center">
+        <div class="fst-italic">
+          <div>
+            &laquo;N'oubliez pas : Le jeu doit rester un jeu&raquo;
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
