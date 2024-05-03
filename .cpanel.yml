@@ -2,4 +2,3 @@
 Deployment:
   tasks:
     – export DEPLOYPATH=/home/yoctan/public_html/nouveausite.yoctan.157-245-242-119.crapid.com/admin.poker
-    – /bin/cp index.html $DEPLOYPATH
