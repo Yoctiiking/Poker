@@ -1,5 +1,5 @@
 ---
-Deployment:
+deployment:
   tasks:
-    – export DEPLOYPATH=/home/yoctan/public_html/poker/cp-panel/
-    – /bin/cp index.html $DEPLOYPATH
+    - export DEPLOYPATH=/home/example/public_html/
+    - /bin/cp index.html $DEPLOYPATH
