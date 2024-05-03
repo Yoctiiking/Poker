@@ -1,4 +1,4 @@
 Deployment:
   tasks:
     – export DEPLOYPATH=/home/yoctan/public_html/poker/cp-panel
-    – /bin/cp -aRf * $DEPLOYPATH
+    – /bin/cp -a * $DEPLOYPATH
