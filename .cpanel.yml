@@ -1,6 +1,6 @@
 Deployment:
   tasks:
-    – export DEPLOYPATH=/home/yoctan/Poker/
+    – export DEPLOYPATH=/home/yoctan/public_html/poker/cp-panel
     – /bin/cp -R .vscode $DEPLOYPATH
     – /bin/cp -R assets $DEPLOYPATH
     – /bin/cp -R css $DEPLOYPATH
