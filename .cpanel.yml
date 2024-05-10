@@ -3,5 +3,6 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/yoctan/public_html/Poker
-    - /bin/cp -f * $DEPLOYPATH
-    - /bin/cp -R * $DEPLOYPATH
+    - /bin/cp index.html $DEPLOYPATH
+    - /bin/cp script.js $DEPLOYPATH
+    - /bin/cp -R images $DEPLOYPATH
